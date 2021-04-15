@@ -1,7 +1,14 @@
 class UpdateSchedules
   def initialize
-    response = HTTP.get("https://data.cityofchicago.org/resource/wvjp-8m67.json")
-    @data = JSON.parse(response.body)
+    schedules = []
+    offset = 0
+    while true
+      response = JSON.parse(HTTP.get("https://data.cityofchicago.org/resource/wvjp-8m67.json?$offset=#{offset}").body)
+      schedules = schedules.concat(response)
+      break if response.length < 1000
+      offset += 1000
+    end
+    @data = schedules
   end
 
   def call

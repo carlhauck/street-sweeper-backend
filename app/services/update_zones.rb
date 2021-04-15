@@ -5,15 +5,21 @@ class UpdateZones
   end
 
   def call
+    non_contig = 0
     @data.each do |r|
+      if r["the_geom"]["coordinates"].flatten(2).length > 1
+        non_contig += 1
+      end
+
       Zone.create!(
         {
-          coordinates: r["the_geom"]["coordinates"],
+          coordinates: r["the_geom"]["coordinates"].flatten(2),
           ward: r["ward"],
           section: r["section"],
           ward_section: r["code"],
         }
       )
     end
+    puts "NON-CONTIG: #{non_contig}"
   end
 end
