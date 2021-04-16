@@ -1,6 +1,6 @@
 class CheckPoint
   def initialize(point)
-    @point = Geokit::LatLng.new(point[1], point[0])
+    @point = Geokit::LatLng.new(point[0], point[1])
   end
 
   def call
@@ -17,6 +17,3 @@ class CheckPoint
     "ZONE NOT FOUND"
   end
 end
-
-# Lat // Long
-# 41.8781° N, 87.6298° W
