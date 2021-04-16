@@ -1,0 +1,2 @@
+class StagingZone < ApplicationRecord
+end

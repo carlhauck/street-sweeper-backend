@@ -1,4 +1,4 @@
-class UpdateSchedules
+class UpdateStagingSchedules
   def initialize
     schedules = []
     offset = 0
@@ -13,8 +13,10 @@ class UpdateSchedules
 
   def call
     @data.each do |r|
-      Schedule.create!(
+      ward_section_month = (r["ward_section_concatenated"].to_s + r["month_number"].to_s).to_i
+      StagingSchedule.create!(
         {
+          ward_section_month: ward_section_month,
           ward_section: r["ward_section_concatenated"],
           ward: r["ward"],
           section: r["section"],
