@@ -4,9 +4,14 @@ class UpdateStagingZones
     @data = JSON.parse(response.body)
   end
 
+  def delete_sql
+    "DELETE FROM staging_zones;"
+  end
+
   def call
+    ActiveRecord::Base.connection.exec_query(delete_sql)
     @data.each do |r|
-      StagingZone.create!(
+      StagingZone.create(
         {
           coordinates: r["the_geom"]["coordinates"].flatten(2),
           ward: r["ward"],

@@ -11,10 +11,15 @@ class UpdateStagingSchedules
     @data = schedules
   end
 
+  def delete_sql
+    "DELETE FROM staging_schedules;"
+  end
+
   def call
+    ActiveRecord::Base.connection.exec_query(delete_sql)
     @data.each do |r|
       ward_section_month = (r["ward_section_concatenated"].to_s + r["month_number"].to_s).to_i
-      StagingSchedule.create!(
+      StagingSchedule.create(
         {
           ward_section_month: ward_section_month,
           ward_section: r["ward_section_concatenated"],

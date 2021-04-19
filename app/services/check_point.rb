@@ -10,7 +10,7 @@ class CheckPoint
           z.coordinates
           .map { |c| Geokit::LatLng.new(c[1], c[0]) })
           .contains?(@point)
-        return z.schedules.present? ? z.schedules : z
+        return z.schedules.present? ? z.schedules.sort { |a, b|  a.month_number.to_i <=> b.month_number.to_i } : z
         break
       end
     end

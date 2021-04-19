@@ -43,3 +43,4 @@ gem 'rack-cors'
 gem 'jb'
 gem 'rexml'
 gem 'geokit-rails'
+gem 'rubocop', require: false

@@ -1,4 +1,4 @@
-class MergeSchedules
+class InsertSchedules
   def initialize(*args)
   end
 
