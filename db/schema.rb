@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_044420) do
+ActiveRecord::Schema.define(version: 2021_08_31_012328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "email_logs", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "sent_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "schedules", force: :cascade do |t|
     t.string "ward_section"
@@ -42,6 +49,15 @@ ActiveRecord::Schema.define(version: 2021_04_16_044420) do
     t.string "ward"
     t.string "section"
     t.string "ward_section"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "address"
+    t.string "ward_section"
+    t.boolean "is_subscribed", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
