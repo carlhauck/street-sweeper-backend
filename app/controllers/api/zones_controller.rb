@@ -10,7 +10,6 @@ class Api::ZonesController < ApplicationController
     def set_schedules
       lat = params[:lat].to_f
       lng = params[:lng].to_f
-      # @schedules = CheckPoint.new(GeocodeAddress.new(address).call).call
       @schedules = CheckPoint.new(lat, lng).call
     end
 end
