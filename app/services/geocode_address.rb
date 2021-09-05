@@ -4,6 +4,7 @@ class GeocodeAddress
   end
 
   def call
-    Geokit::Geocoders::MapboxGeocoder.geocode(@address).ll.split(",").map(&:to_f) # returns [lat, lng] array of floats
+    Geokit::Geocoders::MapboxGeocoder.geocode(@address).ll.split(",").map(&:to_f)
+    # returns array of floats: [lat, lng]
   end
 end

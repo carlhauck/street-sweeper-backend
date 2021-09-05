@@ -1,6 +1,6 @@
 class UpdateStagingZones
   def initialize
-    response = HTTP.get("https://data.cityofchicago.org/resource/u7w7-t89t.json")
+    response = HTTP.get("https://data.cityofchicago.org/resource/u7w7-t89t.json?$$app_token=#{Rails.application.credentials.socrata[:app_token]}")
     @data = JSON.parse(response.body)
   end
 

@@ -44,3 +44,4 @@ gem 'jb'
 gem 'rexml'
 gem 'geokit-rails'
 gem 'rubocop', require: false
+gem 'pry', '~> 0.13.1'

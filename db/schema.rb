@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_31_012328) do
+ActiveRecord::Schema.define(version: 2021_09_05_033307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_08_31_012328) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "ward_section_month"
+    t.index ["ward_section"], name: "index_schedules_on_ward_section"
   end
 
   create_table "staging_schedules", force: :cascade do |t|
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_08_31_012328) do
     t.string "ward_section"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["ward_section"], name: "index_zones_on_ward_section"
   end
 
 end

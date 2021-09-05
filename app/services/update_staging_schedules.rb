@@ -3,7 +3,7 @@ class UpdateStagingSchedules
     schedules = []
     offset = 0
     while true
-      response = JSON.parse(HTTP.get("https://data.cityofchicago.org/resource/wvjp-8m67.json?$offset=#{offset}").body)
+      response = JSON.parse(HTTP.get("https://data.cityofchicago.org/resource/wvjp-8m67.json?$$app_token=#{Rails.application.credentials.socrata[:app_token]}&$offset=#{offset}").body)
       schedules = schedules.concat(response)
       break if response.length < 1000
       offset += 1000
